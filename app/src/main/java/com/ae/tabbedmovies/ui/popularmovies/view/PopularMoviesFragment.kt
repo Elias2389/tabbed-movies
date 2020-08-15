@@ -1,4 +1,4 @@
-package com.ae.tabbedmovies.ui.popularmovies
+package com.ae.tabbedmovies.ui.popularmovies.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ae.tabbedmovies.R
+import com.ae.tabbedmovies.ui.popularmovies.viewmodel.PageViewModel
 
 /**
  * A placeholder fragment containing a simple view.
@@ -49,7 +50,8 @@ class PopularMoviesFragment : Fragment() {
          */
         @JvmStatic
         fun newInstance(sectionNumber: Int): PopularMoviesFragment {
-            return PopularMoviesFragment().apply {
+            return PopularMoviesFragment()
+                .apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }

@@ -1,4 +1,4 @@
-package com.ae.tabbedmovies.ui.popularmovies
+package com.ae.tabbedmovies.ui.popularmovies.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
