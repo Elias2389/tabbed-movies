@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TabbedMovies</string>
+    <string name="tab_text_1">Popular</string>
+    <string name="tab_text_2">Top Rated</string>
+    <string name="tab_text_3">Upcoming</string>
+</resources>
