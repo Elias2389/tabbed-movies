@@ -1,4 +1,4 @@
-package com.ae.tabbedmovies.ui.main
+package com.ae.tabbedmovies.ui.popularmovies
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,7 @@ import com.ae.tabbedmovies.R
 /**
  * A placeholder fragment containing a simple view.
  */
-class PlaceholderFragment : Fragment() {
+class PopularMoviesFragment : Fragment() {
 
     private lateinit var pageViewModel: PageViewModel
 
@@ -48,8 +48,8 @@ class PlaceholderFragment : Fragment() {
          * number.
          */
         @JvmStatic
-        fun newInstance(sectionNumber: Int): PlaceholderFragment {
-            return PlaceholderFragment().apply {
+        fun newInstance(sectionNumber: Int): PopularMoviesFragment {
+            return PopularMoviesFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }
