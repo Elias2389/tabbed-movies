@@ -6,14 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ae.tabbedmovies.R
-import com.ae.tabbedmovies.ui.popularmovies.viewmodel.PageViewModel
 
 /**
  * A placeholder fragment containing a simple view.
  */
 class PopularMoviesFragment : Fragment() {
 
-    private lateinit var pageViewModel: PageViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
