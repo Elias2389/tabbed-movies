@@ -43,8 +43,8 @@ android {
 ext {
     nav_version = "2.3.0"
     koin_version = '2.1.6'
-    retrofitVersion = "2.6.4"
-    logginInterceptorVersion = "4.0.1"
+    retrofitVersion = "2.7.1"
+    logginInterceptorVersion = "4.2.1"
     gsonVersion = "2.8.6"
     rxJavaVersion = "2.2.6"
     rxAndroidVersion = "2.1.1"
