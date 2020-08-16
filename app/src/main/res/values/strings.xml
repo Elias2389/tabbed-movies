@@ -3,4 +3,6 @@
     <string name="tab_text_1">Popular</string>
     <string name="tab_text_2">Top Rated</string>
     <string name="tab_text_3">Upcoming</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
