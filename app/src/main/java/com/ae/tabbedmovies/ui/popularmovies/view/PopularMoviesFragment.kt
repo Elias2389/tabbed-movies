@@ -1,31 +1,76 @@
 package com.ae.tabbedmovies.ui.popularmovies.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.ae.tabbedmovies.R
-import com.ae.tabbedmovies.ui.popularmovies.viewmodel.PageViewModel
+import com.ae.tabbedmovies.adapter.MoviesRecyclerView
+import com.ae.tabbedmovies.databinding.FragmentPopularMoviesBinding
+import com.ae.tabbedmovies.dto.Status
+import com.ae.tabbedmovies.ui.popularmovies.viewmodel.PopularMoviesViewModel
+import org.koin.android.ext.android.inject
 
 /**
  * A placeholder fragment containing a simple view.
  */
 class PopularMoviesFragment : Fragment() {
 
-    private lateinit var pageViewModel: PageViewModel
+    private val binding get() = popularMoviesBinding!!
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+    private lateinit var adapter: MoviesRecyclerView
+    private var popularMoviesBinding: FragmentPopularMoviesBinding? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
+    private val popularMoviesViewModel by inject<PopularMoviesViewModel>()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_popular_movies, container, false)
+
+        popularMoviesBinding = FragmentPopularMoviesBinding.inflate(inflater, container, false)
+        return binding.root
     }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        setupAdapter()
+        getPopularMovies()
+    }
+
+
+    private fun getPopularMovies() {
+        popularMoviesViewModel.popularMovies.observe(viewLifecycleOwner, Observer { resourse ->
+            when(resourse.status) {
+                Status.LOADING -> {
+                    Log.i("loading", "Loading")
+                }
+                Status.SUCCESS -> {
+                    resourse?.data?.results?.let {
+                        adapter.addItems(it)
+                        adapter.notifyDataSetChanged()
+                    }
+                }
+                Status.ERROR -> {}
+            }
+
+        })
+    }
+
+    private fun setupAdapter() {
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        popularMoviesBinding?.recyclerItems?.layoutManager = layoutManager
+        adapter = MoviesRecyclerView(requireContext())
+        popularMoviesBinding?.recyclerItems?.adapter = adapter
+    }
+
 
 
 }

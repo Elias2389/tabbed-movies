@@ -1,17 +1,15 @@
-package com.ae.tabbedmovies.ui.topdated.viewmodel
+package com.ae.tabbedmovies.ui.popularmovies.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.ae.tabbedmovies.data.service.MoviesServices
 import com.ae.tabbedmovies.dto.MoviesResponse
 import com.ae.tabbedmovies.dto.Resource
 import kotlinx.coroutines.Dispatchers
 
-class TopRatedViewModel(private val moviesServices: MoviesServices): ViewModel() {
+class PopularMoviesViewModel(private val moviesServices: MoviesServices): ViewModel() {
 
-    val topRatedMovies: LiveData<Resource<MoviesResponse>> = liveData(Dispatchers.IO) {
-        val result = moviesServices.getTopRated()
+    val popularMovies: LiveData<Resource<MoviesResponse>> = liveData(Dispatchers.IO) {
+        val result = moviesServices.getPopularMovies()
         emit(Resource.loading(data = null))
 
         try {
