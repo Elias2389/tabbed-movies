@@ -51,7 +51,6 @@ class MoviesRecyclerView(private val context: Context):
                 description.text = resultsItem.overview
                 Glide.with(context)
                     .load(BuildConfig.BASE_URL_IMAGES + resultsItem.backdropPath)
-                    .centerCrop()
                     .into(image)
             }
 
