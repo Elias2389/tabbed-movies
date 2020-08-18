@@ -20,7 +20,7 @@ interface MoviesServices {
      * @return response with latest movie
      */
     @GET("upcoming")
-    suspend fun getLatestMovie(): MoviesResponse
+    suspend fun getUpcoming(): MoviesResponse
 
     /**
      * Method to get the top rated movies from API REST
