@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -54,6 +55,7 @@ ext {
     rxAndroidVersion = "2.1.1"
     rxAdapter = "2.4.0"
     glideVersion = "4.11.0"
+    roomVersion = "1.1.1"
 }
 
 dependencies {
@@ -94,6 +96,13 @@ dependencies {
 
     //Multidex
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    // Room components
+    implementation 'androidx.room:room-runtime:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    androidTestImplementation 'androidx.room:room-testing:2.2.5'
+    implementation 'androidx.room:room-runtime:2.2.5'
+    kapt 'androidx.room:room-compiler:2.2.5'
 
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
