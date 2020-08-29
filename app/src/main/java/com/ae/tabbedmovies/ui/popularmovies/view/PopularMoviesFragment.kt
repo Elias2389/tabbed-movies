@@ -9,10 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ae.tabbedmovies.R
 import com.ae.tabbedmovies.adapter.MoviesRecyclerView
 import com.ae.tabbedmovies.databinding.FragmentPopularMoviesBinding
-import com.ae.tabbedmovies.dto.Status
+import com.ae.tabbedmovies.data.networkboundresource.Status
 import com.ae.tabbedmovies.ui.popularmovies.viewmodel.PopularMoviesViewModel
 import org.koin.android.ext.android.inject
 
@@ -44,7 +43,6 @@ class PopularMoviesFragment : Fragment() {
         setupAdapter()
         getPopularMovies()
     }
-
 
     private fun getPopularMovies() {
         popularMoviesViewModel.popularMovies.observe(viewLifecycleOwner, Observer { resourse ->

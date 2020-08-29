@@ -1,19 +1,16 @@
-package com.arivas.moviesappkotlin.common.network.networkboundresource
+package com.ae.tabbedmovies.data.networkboundresource
 
 import android.annotation.SuppressLint
 import android.os.AsyncTask
 import androidx.annotation.MainThread
-import androidx.annotation.NonNull
 import androidx.annotation.Nullable
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
-import com.ae.tabbedmovies.dto.Resource
 
 
-abstract class NetworkBoundResource<ResultType, RequestType> {
-    @MainThread constructor()
+abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constructor() {
     private val result = MediatorLiveData<Resource<ResultType>>()
 
     init {
