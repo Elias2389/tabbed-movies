@@ -1,14 +1,13 @@
-package com.arivas.moviesappkotlin.common.db
+package com.ae.tabbedmovies.data.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.ae.tabbedmovies.data.db.MoviesDao
-import com.arivas.moviesappkotlin.common.DATABASE_NAME
-import com.arivas.moviesappkotlin.common.dto.ResultsItem
+import com.ae.tabbedmovies.common.Constants.Companion.DATABASE_NAME
+import com.ae.tabbedmovies.entity.ResultsItemEntity
 
-@Database(entities = [ResultsItem::class], version = 2, exportSchema = false)
+@Database(entities = [ResultsItemEntity::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun moviesDao(): MoviesDao
 

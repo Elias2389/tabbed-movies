@@ -2,7 +2,7 @@ package com.ae.tabbedmovies.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.ae.tabbedmovies.dto.ResultsItem
+import com.ae.tabbedmovies.entity.ResultsItemEntity
 
 @Dao
 interface MoviesDao {
@@ -13,7 +13,7 @@ interface MoviesDao {
      * @return results
      */
     @Query("SELECT * FROM movies")
-    fun getMoviesFromDatabase(): LiveData<List<ResultsItem>>
+    fun getMoviesFromDatabase(): LiveData<List<ResultsItemEntity>>
 
     /**
      * Insert results in DB
@@ -21,5 +21,5 @@ interface MoviesDao {
      * @param resultsItem
      */
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMoviesToDatabase(resultsItem: List<ResultsItem>)
+    fun insertMoviesToDatabase(resultsItem: List<ResultsItemEntity>)
 }

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import com.ae.tabbedmovies.BuildConfig
 import com.ae.tabbedmovies.R
 import com.ae.tabbedmovies.databinding.ItemBinding
-import com.ae.tabbedmovies.dto.ResultsItem
+import com.ae.tabbedmovies.entity.ResultsItemEntity
 
 
 import com.bumptech.glide.Glide
@@ -18,9 +18,9 @@ import com.bumptech.glide.Glide
 
 class MoviesRecyclerView(private val context: Context):
     RecyclerView.Adapter<MoviesRecyclerView.ViewHolder>() {
-    private var moviesList: ArrayList<ResultsItem> = ArrayList()
+    private var moviesList: ArrayList<ResultsItemEntity> = ArrayList()
 
-    fun addItems(results: List<ResultsItem>) {
+    fun addItems(results: List<ResultsItemEntity>) {
         moviesList.addAll(results)
     }
 
@@ -45,7 +45,7 @@ class MoviesRecyclerView(private val context: Context):
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemBinding.bind(itemView)
 
-        fun bind(resultsItem: ResultsItem, context: Context) {
+        fun bind(resultsItem: ResultsItemEntity, context: Context) {
             binding.apply {
                 title.text = resultsItem.title
                 description.text = resultsItem.overview

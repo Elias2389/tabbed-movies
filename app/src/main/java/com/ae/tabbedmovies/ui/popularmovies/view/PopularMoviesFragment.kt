@@ -51,7 +51,7 @@ class PopularMoviesFragment : Fragment() {
                     Log.i("loading", "Loading")
                 }
                 Status.SUCCESS -> {
-                    resourse?.data?.results?.let {
+                    resourse?.data?.let {
                         adapter.addItems(it)
                         adapter.notifyDataSetChanged()
                     }

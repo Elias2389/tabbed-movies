@@ -2,7 +2,9 @@ package com.ae.tabbedmovies.core.di
 
 import com.ae.tabbedmovies.BuildConfig
 import com.ae.tabbedmovies.common.Constants.Companion.API_KEY
+import com.ae.tabbedmovies.data.db.MoviesDao
 import com.ae.tabbedmovies.data.service.MoviesServices
+import com.ae.tabbedmovies.data.db.AppDatabase
 import okhttp3.HttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -56,4 +58,10 @@ val appModule: Module = module {
      * Provide MoviesServices
      */
     single<MoviesServices> { get<Retrofit>().create(MoviesServices::class.java) }
+
+    /**
+     * Provide MoviesDao
+     */
+    single<MoviesDao> { AppDatabase.getInstance(get()).moviesDao() }
+
 }
