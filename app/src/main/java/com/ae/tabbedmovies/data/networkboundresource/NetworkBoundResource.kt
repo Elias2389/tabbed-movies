@@ -1,4 +1,4 @@
-package com.arivas.moviesappkotlin.common.network.networkboundresource
+package com.ae.tabbedmovies.data.networkboundresource
 
 import android.annotation.SuppressLint
 import android.os.AsyncTask
@@ -9,12 +9,18 @@ import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
-import com.ae.tabbedmovies.dto.Resource
+import androidx.lifecycle.liveData
+import com.ae.tabbedmovies.dto.MoviesResponse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope.coroutineContext
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
 
 
-abstract class NetworkBoundResource<ResultType, RequestType> {
-    @MainThread constructor()
+abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constructor() {
     private val result = MediatorLiveData<Resource<ResultType>>()
+    private val supervisorJob = SupervisorJob()
 
     init {
         result.value = Resource.loading(null)
@@ -31,25 +37,25 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
         })
     }
 
-    @SuppressLint("CheckResult")
     private fun fetchFromNetwork(dbSource: LiveData<ResultType>) {
         result.addSource(dbSource, Observer { newData ->
+            result.removeSource(dbSource)
             result.value = Resource.loading(newData)
         })
 
-//        createCall()
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribeOn(Schedulers.io())
-//            .subscribe({ response ->
-//                result.removeSource(dbSource)
-//                saveResultAndReInit(response)
-//            },{ error ->
-//                onFetchFailed()
-//                result.removeSource(dbSource)
-//                result.addSource(dbSource, Observer { newData ->
-//                    result.value = Resource.error(error.message.toString(), newData)
-//                })
-//            })
+        CoroutineScope(coroutineContext).launch(supervisorJob) {
+            try {
+                val response = createCall()
+                result.removeSource(dbSource)
+                saveResultAndReInit(response)
+            } catch (error: Exception) {
+                onFetchFailed()
+                result.removeSource(dbSource)
+                result.addSource(dbSource, Observer { newData ->
+                    //result.value = Resource.error(data = newData, message = error.message ?: "Error Occurred!")
+                })
+            }
+        }
 
     }
 
@@ -75,15 +81,15 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
     @MainThread
     protected abstract fun loadFromDb(): LiveData<ResultType>
 
-//    @NonNull
-//    @MainThread
-//    protected abstract fun createCall(): Observable<RequestType>
+    @NonNull
+    @MainThread
+    protected abstract suspend fun createCall(): RequestType
 
     @WorkerThread
     protected abstract fun saveCallResult(item: RequestType)
 
     @MainThread
-     protected fun shouldFetch(@Nullable data: ResultType): Boolean {
+    protected fun shouldFetch(@Nullable data: ResultType): Boolean {
         return true
     }
 
@@ -94,6 +100,5 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
     fun getAsLiveData(): LiveData<Resource<ResultType>> {
         return result
     }
-
 }
 

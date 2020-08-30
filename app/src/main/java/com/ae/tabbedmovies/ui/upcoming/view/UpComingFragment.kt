@@ -9,12 +9,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.ae.tabbedmovies.R
 import com.ae.tabbedmovies.adapter.MoviesRecyclerView
-import com.ae.tabbedmovies.databinding.FragmentTopRatedBinding
 import com.ae.tabbedmovies.databinding.FragmentUpComingBinding
-import com.ae.tabbedmovies.dto.Status
-import com.ae.tabbedmovies.ui.topdated.viewmodel.TopRatedViewModel
+import com.ae.tabbedmovies.data.networkboundresource.Status
 import com.ae.tabbedmovies.ui.upcoming.viewmodel.UpComingViewModel
 import org.koin.android.ext.android.inject
 

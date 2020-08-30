@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.ae.tabbedmovies.data.service.MoviesServices
 import com.ae.tabbedmovies.dto.MoviesResponse
-import com.ae.tabbedmovies.dto.Resource
+import com.ae.tabbedmovies.data.networkboundresource.Resource
 import kotlinx.coroutines.Dispatchers
 
 class UpComingViewModel(private val moviesServices: MoviesServices): ViewModel() {
