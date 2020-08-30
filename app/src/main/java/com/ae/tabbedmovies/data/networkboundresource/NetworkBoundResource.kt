@@ -52,7 +52,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constru
                 onFetchFailed()
                 result.removeSource(dbSource)
                 result.addSource(dbSource, Observer { newData ->
-                    //result.value = Resource.error(data = newData, message = error.message ?: "Error Occurred!")
+                    result.value = Resource.error(data = newData, message = error.message ?: "Error Occurred!")
                 })
             }
         }
