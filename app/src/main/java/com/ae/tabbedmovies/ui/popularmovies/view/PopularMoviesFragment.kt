@@ -40,8 +40,8 @@ class PopularMoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupAdapter()
         getPopularMovies()
+        setupAdapter()
     }
 
     private fun getPopularMovies() {

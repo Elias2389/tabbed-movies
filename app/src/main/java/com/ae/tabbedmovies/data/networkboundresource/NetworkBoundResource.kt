@@ -39,11 +39,10 @@ abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constru
 
     private fun fetchFromNetwork(dbSource: LiveData<ResultType>) {
         result.addSource(dbSource, Observer { newData ->
-            result.removeSource(dbSource)
             result.value = Resource.loading(newData)
         })
 
-        CoroutineScope(coroutineContext).launch(supervisorJob) {
+        CoroutineScope(coroutineContext).launch(Dispatchers.Main) {
             try {
                 val response = createCall()
                 result.removeSource(dbSource)
