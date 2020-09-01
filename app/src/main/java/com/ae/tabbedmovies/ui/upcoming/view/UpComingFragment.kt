@@ -34,8 +34,8 @@ class UpComingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupAdapter()
-        getPopularMovies()
+        //setupAdapter()
+        //getPopularMovies()
     }
 
     private fun getPopularMovies() {
