@@ -46,6 +46,7 @@ class PopularMoviesFragment : Fragment() {
 
     private fun getPopularMovies() {
         popularMoviesViewModel.popularMovies.observe(viewLifecycleOwner, Observer { resourse ->
+            val a = resourse
             when(resourse.status) {
                 Status.LOADING -> {
                     Log.i("loading", "Loading")

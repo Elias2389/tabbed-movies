@@ -30,6 +30,12 @@ class PopularMoviesViewModel(private val moviesServices: MoviesServices,
                     e.stackTrace
                 }
             }
+
+            override fun shouldFetch(data: List<ResultsItemEntity>): Boolean {
+                return data == null || data.isEmpty()
+            }
+
+
         }.getAsLiveData()
 
 }
