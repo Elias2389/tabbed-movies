@@ -35,11 +35,11 @@ class TopRatedFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupAdapter()
-        getPopularMovies()
+        getTopRatedMovies()
     }
 
 
-    private fun getPopularMovies() {
+    private fun getTopRatedMovies() {
         topRatedViewModel.topRatedMovies.observe(viewLifecycleOwner, Observer { resourse ->
             when(resourse.status) {
                 Status.LOADING -> {

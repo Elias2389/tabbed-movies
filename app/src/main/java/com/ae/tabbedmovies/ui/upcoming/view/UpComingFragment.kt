@@ -34,11 +34,11 @@ class UpComingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //setupAdapter()
-        //getPopularMovies()
+        setupAdapter()
+        getUpcomingMovies()
     }
 
-    private fun getPopularMovies() {
+    private fun getUpcomingMovies() {
         upComingViewModel.upcoming.observe(viewLifecycleOwner, Observer { resourse ->
             when(resourse.status) {
                 Status.LOADING -> {
