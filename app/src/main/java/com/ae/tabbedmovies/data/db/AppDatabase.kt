@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ae.tabbedmovies.common.Constants.Companion.DATABASE_NAME
-import com.ae.tabbedmovies.entity.ResultsItemEntity
+import com.ae.tabbedmovies.dto.ResultsItemEntity
 
 @Database(entities = [ResultsItemEntity::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {

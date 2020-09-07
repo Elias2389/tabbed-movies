@@ -2,7 +2,7 @@ package com.ae.tabbedmovies.data.db
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.ae.tabbedmovies.entity.ResultsItemEntity
+import com.ae.tabbedmovies.dto.ResultsItemEntity
 
 @Dao
 interface MoviesDao {
