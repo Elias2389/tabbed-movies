@@ -88,9 +88,7 @@ abstract class NetworkBoundResource<ResultType, RequestType> {
     protected abstract fun saveCallResult(item: RequestType)
 
     @MainThread
-    protected fun shouldFetch(@Nullable data: ResultType): Boolean {
-        return true
-    }
+    protected abstract fun shouldFetch(@Nullable data: ResultType): Boolean
 
     @MainThread
     protected fun onFetchFailed() {
