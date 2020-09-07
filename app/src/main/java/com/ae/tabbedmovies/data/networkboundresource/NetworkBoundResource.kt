@@ -9,8 +9,6 @@ import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.Observer
-import androidx.lifecycle.liveData
-import com.ae.tabbedmovies.dto.MoviesResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope.coroutineContext
@@ -18,7 +16,9 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 
-abstract class NetworkBoundResource<ResultType, RequestType> @MainThread constructor() {
+abstract class NetworkBoundResource<ResultType, RequestType> {
+    @MainThread constructor()
+
     private val result = MediatorLiveData<Resource<ResultType>>()
     private val supervisorJob = SupervisorJob()
 
