@@ -6,7 +6,7 @@ import com.ae.tabbedmovies.data.networkboundresource.NetworkBoundResource
 import com.ae.tabbedmovies.data.service.MoviesServices
 import com.ae.tabbedmovies.dto.MoviesResponse
 import com.ae.tabbedmovies.data.networkboundresource.Resource
-import com.ae.tabbedmovies.entity.ResultsItemEntity
+import com.ae.tabbedmovies.dto.ResultsItemEntity
 import java.lang.RuntimeException
 
 class PopularMoviesViewModel(private val moviesServices: MoviesServices,

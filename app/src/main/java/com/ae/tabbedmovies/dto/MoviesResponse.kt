@@ -1,6 +1,5 @@
 package com.ae.tabbedmovies.dto
 
-import com.ae.tabbedmovies.entity.ResultsItemEntity
 import com.google.gson.annotations.SerializedName
 
 data class MoviesResponse(

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import com.ae.tabbedmovies.BuildConfig
 import com.ae.tabbedmovies.R
 import com.ae.tabbedmovies.databinding.ItemBinding
-import com.ae.tabbedmovies.entity.ResultsItemEntity
+import com.ae.tabbedmovies.dto.ResultsItemEntity
 
 
 import com.bumptech.glide.Glide
